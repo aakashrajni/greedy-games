@@ -1,8 +1,13 @@
 import React from 'react';
 
-const PrimaryButton = ({value}) => {
+const PrimaryButton = ({value, clickFn}) => {
     return(
-        <div>{value}</div>
+        <button
+            className="primaryBtn"
+            onClick={clickFn}
+        >
+            {value}
+        </button>
     )
 }
 

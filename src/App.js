@@ -3,17 +3,16 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggle, changeDate } from './features/toggle/toggleSlice';
 import IconButton from './components/IconButton';
-import Settings from './components/Settings';
 import Table from './components/Table';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import { loadtableData } from './app/tableData';
 
 function App() {
-  const toggleValue = useSelector((state) => state.toggle.value)
   const selectedDate = useSelector((state) => state.toggle.selectedDate)
   const dispatch = useDispatch()
 
   const data = useSelector((state) => state.tableData.list)
+  // const settingValue = useSelector((state) => state.toggle.tableHeader)
 
   const columns = React.useMemo(() => [
     {
@@ -44,6 +43,14 @@ function App() {
       Header: 'Revenue',
       accessor: 'revenue',
     },
+    {
+      Header: 'Fill Rate',
+      accessor: 'fill_rate',
+    },
+    {
+      Header: 'CTR',
+      accessor: 'ctr',
+    },
   ],[])
 
   useEffect(() => {
@@ -73,11 +80,10 @@ function App() {
               clickFn={() => dispatch(toggle())}
             />
           </div>
-          {toggleValue && <Settings />}
         </div>
-        <div className="tableContainer">
+        <div>
           <Table 
-            data={data.data}
+            data={data}
             columns = {columns}
           />
         </div>

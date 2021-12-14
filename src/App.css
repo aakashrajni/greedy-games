@@ -4,7 +4,8 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .leftMenu{
@@ -32,8 +33,79 @@
 }
 
 .settings{
+  padding: 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  margin:  15px 20px;
 }
 
 .tableContainer{
   margin: 20px 20px;
+}
+
+.settingsTabContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.settingsTab{
+  margin-right: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  width: 120px;
+}
+
+.tabVisible{
+  border-left: 5px solid #136FED;
+}
+
+.settingActionContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.primaryBtn{
+  margin: 10px;
+  background-color: #136FED;
+  padding: 10px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  border: 1px solid #136FED;
+}
+
+.secondaryBtn{
+  margin: 10px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  color: #136FED;
+  border-radius: 3px;
+  border: 1px solid #EAEAEA;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td{
+  padding: 13px 0px;
+}
+
+tbody tr{
+  border-top: 1px solid rgba(112, 112, 112, 0.15);
+}
+
+th{
+  border: none;
+  padding: 13px 0px;
+}
+
+.settingCheckbox{
+  display: none;
 }

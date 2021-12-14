@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
+import moment from 'moment';
 
 const slice = createSlice({
     name: "tableData",
@@ -14,7 +15,19 @@ const slice = createSlice({
         },
 
         tableDataReceived: (tableData, action) => {
-            tableData.list = action.payload;
+            tableData.list = action.payload.data.map((data) =>{
+                console.log(data)
+                data.fill_rate = (data.requests/data.responses*100).toFixed(2) + " %"
+                data.ctr = (data.clicks/data.impressions*100).toFixed(2) + " %"
+                // data.date = moment(new Date(data.date)).format("dd-mm-yyyy");
+                data.requests = data.requests.toLocaleString();
+                data.responses = data.responses.toLocaleString();
+                data.impressions = data.impressions.toLocaleString();
+                data.clicks = data.clicks.toLocaleString();
+                data.revenue = data.revenue.toFixed(2);
+                return data
+            })
+            // tableData.list = action.payload;
             tableData.loading = false;
         },
 
