@@ -104,6 +104,12 @@ tbody tr{
 th{
   border: none;
   padding: 13px 0px;
+  text-align: left;
+
+}
+
+.numberAlign{
+  text-align: right;
 }
 
 .settingCheckbox{

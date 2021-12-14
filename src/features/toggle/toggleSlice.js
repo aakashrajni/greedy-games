@@ -55,6 +55,7 @@ export const toggleSlice = createSlice({
             state.value = !state.value;
         },
         changeDate: (state,action) =>{
+            console.log(state.selectedDate,action);
             state.selectedDate = action.payload;
         }
     },

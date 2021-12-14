@@ -2,9 +2,9 @@ import React from 'react';
 import { useTable, useSortBy } from 'react-table';
 import { useSelector } from 'react-redux';
 import Settings from './Settings';
+import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
 
 const Table = ({columns, data}) => {
-    console.log(columns,data);
 
   const toggleValue = useSelector((state) => state.toggle.value)
     const {
@@ -25,10 +25,10 @@ const Table = ({columns, data}) => {
                     {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map(column => (
-                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                            <div>
-                              {column.isSorted ? (column.isSortedDesc ? 'D' : 'A') : ''}
-                            </div>
+                        <th className={column.columnAlignClass} {...column.getHeaderProps(column.getSortByToggleProps())}>
+                            
+                            {column.isSorted ? (column.isSortedDesc ? <FaSortAmountDown /> : <FaSortAmountUp/>) : ''}
+                            
                             {column.render('Header')}
                         </th>
                         ))}
@@ -41,7 +41,7 @@ const Table = ({columns, data}) => {
                     return (
                         <tr {...row.getRowProps()}>
                         {row.cells.map(cell => {
-                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                            return <td className={cell.column.columnAlignClass} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                         })}
                         </tr>
                     )
